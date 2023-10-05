@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    Maze maze("../tests/test.txt");
+    Maze maze("../tests/test3.txt");
     cout << maze << endl;
 
     MazeSolver maze_solver;

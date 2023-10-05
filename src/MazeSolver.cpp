@@ -45,12 +45,11 @@ void MazeSolver::solve(Maze& maze) {
                 }
 
                 m_attempted_moves.push_back(option);
-                maze.set_solution_at(option, '*'); // TODO just for funsies
 
                 m_successful_moves.push(current_position); // TODO is this right?
                 m_successful_moves.push(option);
 
-                break; //you have to exit the loop when you find a valid spot
+                break; //more efficient to exit the loop when you find a valid spot
             }
         }
 
@@ -64,7 +63,7 @@ void MazeSolver::solve(Maze& maze) {
                 maze.set_solution_at(m_successful_moves.pop(), '#');
             }
 
-            maze.save_to_file("../tests/solution.txt");
+            maze.save_to_file("../solved/solution3.txt");
             std::cout << maze; // TODO debug
 
             solved = true;
