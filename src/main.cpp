@@ -1,8 +1,15 @@
 #include <iostream>
+#include "../inc/Maze.h"
+#include "../inc/MazeSolver.h"
 
 using namespace std;
 
 int main() {
-    cout << "Hello World!" << endl;
+    Maze maze("../tests/test.txt");
+    cout << maze << endl;
+
+    MazeSolver maze_solver;
+    maze_solver.solve(maze);
+
     return 0;
 }

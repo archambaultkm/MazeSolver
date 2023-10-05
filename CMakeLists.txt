@@ -4,4 +4,10 @@ project(Assignment_2)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Assignment_2
-        src/main.cpp)
+        src/main.cpp
+        src/MazeSolver.cpp
+        inc/MazeSolver.h
+        src/Maze.cpp
+        inc/Maze.h
+        inc/Stack.h
+        inc/Position.h)
