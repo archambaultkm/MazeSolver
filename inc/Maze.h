@@ -22,12 +22,12 @@ public:
     explicit Maze(const std::string& maze_file);
     ~Maze();
 
-    void set_solution_at(Position p, char c);
-    void save_to_file(std::string filename);
     Position get_maze_start() const;
     Position get_maze_end() const;
+    void set_solution_at(Position p, char c);
     char at(Position p);
-    bool exists_at(Position p);
+    bool contains(Position p);
+    void save_to_file(std::string filename);
 
     friend std::ostream& operator<<(std::ostream& output, Maze& maze);
 };

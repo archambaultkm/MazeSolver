@@ -6,7 +6,7 @@
 #include <fstream>
 #include <iostream>
 
-Maze::Maze(const std::string& file_name) {
+Maze::Maze(const std::string& maze_file) {
 
     m_maze_start = Position(1, 0); // assumes maze entrance is always the first cell on the left
     m_maze_end = Position(MAZE_SIZE-2, MAZE_SIZE-1); //assumes maze exit is always last cell on the right
@@ -15,19 +15,15 @@ Maze::Maze(const std::string& file_name) {
     std::string line;
 
     try {
-        ifs.open(file_name, std::fstream::in);
-
-        if (ifs.fail()) {
-            std::cout << "Could not open file.";
-        }
+        ifs.open(maze_file, std::fstream::in);
 
         int row = 0;
         while (getline(ifs, line)) {
-
             int column = 0;
             for (char ch: line) {
+                //initialize both the unsolved maze and the solution while reading in the file
                 m_maze[row][column] = ch;
-                m_solution[row][column] =ch; // TODO do I want to initialize solution file this way?
+                m_solution[row][column] =ch;
                 column++;
             }
             //move to the next line
@@ -35,7 +31,7 @@ Maze::Maze(const std::string& file_name) {
         }
 
     }  catch (std::ifstream::failure &e) {
-        std::cout << "Exception opening/closing/reading file" << std::endl;
+        std::cout << "Exception reading file" << std::endl;
     }
 }
 
@@ -69,7 +65,7 @@ char Maze::at(Position p) {
     return m_maze[p.get_x()][p.get_y()];
 }
 
-bool Maze::exists_at(Position p) {
+bool Maze::contains(Position p) {
     return  p.get_x() < MAZE_SIZE &&
             p.get_x() > 0 &&
             p.get_y() < MAZE_SIZE &&
@@ -83,9 +79,6 @@ void Maze::save_to_file(std::string file_name) {
 
     try {
         ofs.open(file_name, std::fstream::trunc );
-        if (ofs.fail()) {
-            std::cout << "Could not open file.";
-        }
 
         for (auto & i : m_solution) {
             for (char j : i) {
@@ -95,6 +88,8 @@ void Maze::save_to_file(std::string file_name) {
         }
 
     }  catch (std::ofstream::failure &e) {
-        std::cout << "Exception opening/closing/reading file" << std::endl;
+        std::cout << "Exception writing to file" << std::endl;
     }
+
+    std::cout << "Solution saved to " << file_name << std::endl;
 }

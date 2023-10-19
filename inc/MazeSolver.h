@@ -20,7 +20,8 @@ public:
     MazeSolver();
     ~MazeSolver();
 
-    void solve(Maze& maze);
+    bool solve(Maze& maze);
+    void try_available_paths(Maze& maze, Position position);
 };
 
 
