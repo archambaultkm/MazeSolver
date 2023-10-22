@@ -10,7 +10,8 @@ add_executable(Assignment_2
         src/Maze.cpp
         inc/Maze.h
         inc/Stack.h
-        inc/Coordinate.h)
+        inc/Coordinate.h
+        inc/colours.h)
 
 add_executable(solve
         src/main.cpp
@@ -19,4 +20,5 @@ add_executable(solve
         src/Maze.cpp
         inc/Maze.h
         inc/Stack.h
-        inc/Coordinate.h)
+        inc/Coordinate.h
+        inc/colours.h)
