@@ -2,20 +2,16 @@
 // Created by Kaitlyn Archambault on 2023-10-03.
 //
 
-#include "../inc/MazeSolver.h"
+#include "../inc/maze_solver.h"
 
 #include <iostream>
-
+#include <chrono>
 typedef std::chrono::high_resolution_clock Clock;
-
-MazeSolver::MazeSolver() = default;
-MazeSolver::~MazeSolver() = default;
 
 long MazeSolver::get_elapsed_time() const {
     return m_elapsed_time;
 }
 
-// main algorithm loop will run until available path options are exhausted or solution is found
 bool MazeSolver::solve(Maze& maze) {
 
     // start the timer
@@ -32,7 +28,7 @@ bool MazeSolver::solve(Maze& maze) {
         current_position = m_successful_moves.pop();
         this->try_available_paths(maze, current_position);
 
-        // don't allow .peek() on an empty stack. If the stack is empty at this point the maze can't be solved.
+        // If the stack is empty at this point the maze can't be solved- don't allow .peek() on an empty stack.
         if (m_successful_moves.empty()) break;
 
         // check if the maze is solved:
@@ -55,10 +51,9 @@ bool MazeSolver::solve(Maze& maze) {
     return solved;
 }
 
-// loops through adjacent options for a given position
 void MazeSolver::try_available_paths(Maze& maze, Coordinate<int> position) {
-    // get an array of positions 1 step in each direction from the current position
-    auto options = position.get_adjacent_positions(1);
+    // get an array of coordinates 1 step in each compass direction from the current coordinate
+    auto options = position.get_adjacent_coordinates(1);
 
     // from the available options, only move to a space if it's valid and hasn't been attempted yet
     for (auto &&option : options) {
@@ -66,7 +61,7 @@ void MazeSolver::try_available_paths(Maze& maze, Coordinate<int> position) {
             maze.at(option) == ' ' &&
             std::find(m_attempted_moves.begin(), m_attempted_moves.end(), option) == m_attempted_moves.end()) {
 
-            // log valid option as attempted and successful, and return the last position to the stack
+            // log valid option as attempted and successful, and return the last coordinate to the stack
             m_attempted_moves.push_back(option);
             m_successful_moves.push(position);
             m_successful_moves.push(option);
