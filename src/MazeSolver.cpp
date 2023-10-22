@@ -22,7 +22,7 @@ bool MazeSolver::solve(Maze& maze) {
     auto start = Clock::now();
 
     // initialize starting position and solved status
-    Position current_position = maze.get_maze_start();
+    Coordinate<int> current_position = maze.get_maze_start();
     bool solved = false;
     m_successful_moves.push(current_position);
 
@@ -56,9 +56,9 @@ bool MazeSolver::solve(Maze& maze) {
 }
 
 // loops through adjacent options for a given position
-void MazeSolver::try_available_paths(Maze& maze, Position position) {
+void MazeSolver::try_available_paths(Maze& maze, Coordinate<int> position) {
     // get an array of positions north, east, south, west of the current position
-    auto options = position.get_adjacent_positions();
+    auto options = position.get_adjacent_positions(1);
 
     // from the available options, only move to a space if it's valid and hasn't been attempted yet
     for (auto &&option : options) {

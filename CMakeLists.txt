@@ -10,4 +10,4 @@ add_executable(Assignment_2
         src/Maze.cpp
         inc/Maze.h
         inc/Stack.h
-        inc/Position.h)
+        inc/Coordinate.h)

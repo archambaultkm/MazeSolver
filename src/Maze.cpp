@@ -8,8 +8,8 @@
 
 Maze::Maze(const std::string& maze_file) {
 
-    m_maze_start = Position(1, 0); // assumes maze entrance is always the first cell on the left
-    m_maze_end = Position(MAZE_SIZE-2, MAZE_SIZE-1); //assumes maze exit is always last cell on the right
+    m_maze_start = Coordinate<int>(1, 0); // assumes maze entrance is always the first cell on the left
+    m_maze_end = Coordinate<int>(MAZE_SIZE - 2, MAZE_SIZE - 1); //assumes maze exit is always last cell on the right
 
     std::ifstream ifs;
     std::string line;
@@ -36,11 +36,11 @@ Maze::Maze(const std::string& maze_file) {
 
 Maze::~Maze() = default;
 
-Position Maze::get_maze_start() const {
+Coordinate<int> Maze::get_maze_start() const {
     return m_maze_start;
 }
 
-Position Maze::get_maze_end() const {
+Coordinate<int> Maze::get_maze_end() const {
     return m_maze_end;
 }
 
@@ -56,15 +56,15 @@ std::ostream &operator<<(std::ostream &output, Maze& maze) {
     return output;
 }
 
-void Maze::set_solution_at(Position p, char ch) {
+void Maze::set_solution_at(Coordinate<int> p, char ch) {
     m_solution[p.get_x()][p.get_y()] = ch;
 }
 
-char Maze::at(Position p) {
+char Maze::at(Coordinate<int> p) {
     return m_maze[p.get_x()][p.get_y()];
 }
 
-bool Maze::contains(Position p) {
+bool Maze::contains(Coordinate<int> p) {
     return  p.get_x() < MAZE_SIZE &&
             p.get_x() >= 0 &&
             p.get_y() < MAZE_SIZE &&

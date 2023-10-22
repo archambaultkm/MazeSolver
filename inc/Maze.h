@@ -6,7 +6,7 @@
 #define ASSIGNMENT_2_MAZE_H
 
 #include <string>
-#include "Position.h"
+#include "Coordinate.h"
 
 const int MAZE_SIZE = 51;
 
@@ -15,18 +15,18 @@ private:
     char m_maze[MAZE_SIZE][MAZE_SIZE]{};
     char m_solution[MAZE_SIZE][MAZE_SIZE]{};
 
-    Position m_maze_start;
-    Position m_maze_end;
+    Coordinate<int> m_maze_start;
+    Coordinate<int> m_maze_end;
 
 public:
     explicit Maze(const std::string& maze_file);
     ~Maze();
 
-    Position get_maze_start() const;
-    Position get_maze_end() const;
-    void set_solution_at(Position p, char c);
-    char at(Position p);
-    bool contains(Position p);
+    Coordinate<int> get_maze_start() const;
+    Coordinate<int> get_maze_end() const;
+    void set_solution_at(Coordinate<int> p, char c);
+    char at(Coordinate<int> p);
+    bool contains(Coordinate<int> p);
     void save_to_file(std::string filename);
 
     friend std::ostream& operator<<(std::ostream& output, Maze& maze);

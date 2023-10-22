@@ -10,12 +10,12 @@
 #include <chrono>
 #include "Stack.h"
 #include "Maze.h"
-#include "Position.h"
+#include "Coordinate.h"
 
 class MazeSolver {
 private:
-    Stack<Position> m_successful_moves;
-    std::vector<Position> m_attempted_moves;
+    Stack<Coordinate<int>> m_successful_moves;
+    std::vector<Coordinate<int>> m_attempted_moves;
     long m_elapsed_time {};
 
 public:
@@ -23,7 +23,7 @@ public:
     ~MazeSolver();
 
     bool solve(Maze& maze);
-    void try_available_paths(Maze& maze, Position position);
+    void try_available_paths(Maze& maze, Coordinate<int> position);
     long get_elapsed_time() const;
 };
 

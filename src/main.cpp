@@ -26,10 +26,10 @@ int main(int argc, char *argv[]) {
     string maze_file = argv[1];
     string solution_file = argv[2];
 
-    //read file into maze
+    // initialize maze with given file
     Maze maze(maze_file);
 
-    //solve the maze
+    // solve the maze
     MazeSolver maze_solver;
     if (maze_solver.solve(maze)) {
         cout << "Solved maze at " << maze_file << " in " << maze_solver.get_elapsed_time() << " microseconds" << endl;
