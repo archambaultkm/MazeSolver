@@ -9,7 +9,7 @@ bool isValidFilePath(const string &provided_file_path);
 
 int main(int argc, char *argv[]) {
 
-    // expected argument format is "./../tests/test.txt ../solved/solution.txt"
+    // validate program arguments for maze and solution files
     if (argc == 3) {
         if (!isValidFilePath(argv[1]) || !isValidFilePath(argv[2])) {
             cout << "Must enter a valid .txt format file name for both the maze and solution file." << endl;
@@ -31,11 +31,9 @@ int main(int argc, char *argv[]) {
 
     //solve the maze
     MazeSolver maze_solver;
-
     if (maze_solver.solve(maze)) {
-        cout << "Solved maze at " << maze_file << "!" << endl;
+        cout << "Solved maze at " << maze_file << " in " << maze_solver.get_elapsed_time() << " microseconds" << endl;
         maze.save_to_file(solution_file);
-
     } else {
         cout << "Could not find a solution. Make sure the provided file is a valid maze." << endl;
     }
@@ -52,7 +50,7 @@ int main(int argc, char *argv[]) {
  * @note Expected file path format is "(/path/)m_file_name.txt"
  */
 bool isValidFilePath(const string &provided_file_path) {
-    regex valid_file_path(R"(^(..)?\/?([a-zA-Z0-9_-]+[\/])?([a-zA-Z0-9_-])+\.txt$)");
+    regex valid_file_path(R"(^(?:..)?\/?(?:[a-zA-Z0-9_-]+[\/])?(?:[a-zA-Z0-9_-])+\.txt$)");
 
     return regex_match(provided_file_path, valid_file_path);
 }

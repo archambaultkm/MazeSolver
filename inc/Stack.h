@@ -10,45 +10,44 @@ class Stack {
 private:
     struct Node {
         T m_data;
-        struct Node * m_next;
+        std::unique_ptr<Node> m_next;
     };
 
-    Node* m_top;
+    std::unique_ptr<Node> m_top;
     int size;
 
 public:
-    Stack() { m_top = nullptr, size = 0; }
+    Stack() { size = 0; }
     ~Stack() = default;
 
+    // check if the stack contains any data
     bool empty() {
         return m_top == nullptr;
     }
 
+    // add new data to the top of the stack
     void push(T data) {
-        Node* node = (Node*)malloc(sizeof(Node));
+        std::unique_ptr<Node> node = std::make_unique<Node>();
         node-> m_data = data;
 
-        if (empty()) {
-            // if stack is empty, node pointer is null
-            node->m_next = nullptr;
-        } else {
-            //otherwise, new node is linked to the current top element
-            node->m_next = m_top;
+        if (!empty()) {
+            // new node is linked to the current top element
+            node->m_next = std::move(m_top);
         }
 
-        //new node goes to the top of the stack
-        m_top = node;
-        size ++;
+        // new node goes to the top of the stack
+        m_top = std::move(node);
+        size++;
     }
 
+    // returns the value of the top node on the stack after removing it
     T pop() {
-        Node* temp = m_top;
-        T temp_data = m_top->m_data;
+        Node * temp = m_top.get();
+        T temp_data = temp->m_data;
 
-        //pop the current top node off the stack
-        m_top = m_top->m_next;
+        // pop the current top node off the stack
+        m_top = std::move(m_top->m_next);
         size--;
-        free(temp);
 
         return temp_data;
     }
@@ -58,6 +57,7 @@ public:
         return m_top->m_data;
     }
 
+    // get the number of nodes in the stack
     int get_size() {
         return size;
     }

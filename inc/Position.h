@@ -5,6 +5,7 @@
 #ifndef ASSIGNMENT_2_POSITION_H
 #define ASSIGNMENT_2_POSITION_H
 
+#include <array>
 
 class Position {
 private:
@@ -25,17 +26,18 @@ public:
         return this->y;
     }
 
-//    Position * get_options() {
-//        //build an array of positions north, east, south, west of the current position
-//        Position options[4]{
-//                Position(this->x +1, this->y), //east
-//                Position(this->x, this->y + 1), //south
-//                Position(this->x -1 , this->y), //west
-//                Position(this->x, this->y - 1), //north
-//        };
-//
-//        return options;
-//    }
+    // returns an array of positions north, east, south, west of the current position
+    std::array<Position, 4> get_adjacent_positions() const {
+
+        std::array<Position, 4> options;
+
+        options[0] = Position(this->x + 1, this->y); // east
+        options[1] = Position(this->x, this->y + 1); // south
+        options[2] = Position(this->x, this->y - 1); // north
+        options[3] = Position(this->x - 1, this->y); // west
+
+        return options;
+    }
 
     bool operator==(const Position& p) const {
         return (this->x == p.x) && (this->y == p.y);

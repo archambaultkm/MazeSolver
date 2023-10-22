@@ -21,15 +21,14 @@ Maze::Maze(const std::string& maze_file) {
         while (getline(ifs, line)) {
             int column = 0;
             for (char ch: line) {
-                //initialize both the unsolved maze and the solution while reading in the file
+                //initialize the unsolved maze and solution
                 m_maze[row][column] = ch;
-                m_solution[row][column] =ch;
+                m_solution[row][column] = ch;
                 column++;
             }
             //move to the next line
             row++;
         }
-
     }  catch (std::ifstream::failure &e) {
         std::cout << "Exception reading file" << std::endl;
     }
@@ -67,9 +66,9 @@ char Maze::at(Position p) {
 
 bool Maze::contains(Position p) {
     return  p.get_x() < MAZE_SIZE &&
-            p.get_x() > 0 &&
+            p.get_x() >= 0 &&
             p.get_y() < MAZE_SIZE &&
-            p.get_y() > 0;
+            p.get_y() >= 0;
 
 }
 

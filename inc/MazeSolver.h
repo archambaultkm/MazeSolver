@@ -7,6 +7,7 @@
 
 
 #include <vector>
+#include <chrono>
 #include "Stack.h"
 #include "Maze.h"
 #include "Position.h"
@@ -15,6 +16,7 @@ class MazeSolver {
 private:
     Stack<Position> m_successful_moves;
     std::vector<Position> m_attempted_moves;
+    long m_elapsed_time {};
 
 public:
     MazeSolver();
@@ -22,6 +24,7 @@ public:
 
     bool solve(Maze& maze);
     void try_available_paths(Maze& maze, Position position);
+    long get_elapsed_time() const;
 };
 
 
