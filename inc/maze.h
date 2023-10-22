@@ -1,4 +1,5 @@
 //
+// maze.h
 // Created by Kaitlyn Archambault on 2023-10-03.
 //
 

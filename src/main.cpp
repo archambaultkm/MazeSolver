@@ -1,3 +1,8 @@
+//
+// main.cpp
+// Created by Kaitlyn Archambault on 2023-10-03.
+//
+
 #include <iostream>
 #include <regex>
 #include "../inc/colours.h"
