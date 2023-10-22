@@ -6,8 +6,14 @@
 #define ASSIGNMENT_2_COORDINATE_H
 
 #include <array>
+#include <concepts>
 
-template <class T>
+// learned from https://stackoverflow.com/questions/14294267/class-template-for-numeric-types
+template<typename T>
+concept arithmetic = std::integral<T> or std::floating_point<T>;
+
+template<class T>
+requires arithmetic<T>
 class Coordinate {
 private:
     T x;
@@ -19,23 +25,23 @@ public:
     Coordinate(const Coordinate & p)= default;
     ~Coordinate() = default;
 
-    int get_x() const {
+    T get_x() const {
         return this->x;
     }
 
-    int get_y() const {
+    T get_y() const {
         return this->y;
     }
 
     // returns an array of positions north, east, south, west of the current position
-    std::array<Coordinate, 4> get_adjacent_positions(T step) const {
+    std::array<Coordinate, 4> get_adjacent_positions(T step_size) const {
 
         std::array<Coordinate, 4> options;
 
-        options[0] = Coordinate(this->x + step, this->y); // east
-        options[1] = Coordinate(this->x, this->y + step); // south
-        options[2] = Coordinate(this->x, this->y - step); // north
-        options[3] = Coordinate(this->x - step, this->y); // west
+        options[0] = Coordinate(this->x + step_size, this->y); // east
+        options[1] = Coordinate(this->x, this->y + step_size); // south
+        options[2] = Coordinate(this->x, this->y - step_size); // north
+        options[3] = Coordinate(this->x - step_size, this->y); // west
 
         return options;
     }

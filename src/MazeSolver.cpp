@@ -57,7 +57,7 @@ bool MazeSolver::solve(Maze& maze) {
 
 // loops through adjacent options for a given position
 void MazeSolver::try_available_paths(Maze& maze, Coordinate<int> position) {
-    // get an array of positions north, east, south, west of the current position
+    // get an array of positions 1 step in each direction from the current position
     auto options = position.get_adjacent_positions(1);
 
     // from the available options, only move to a space if it's valid and hasn't been attempted yet
