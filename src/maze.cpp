@@ -6,7 +6,7 @@
 #include <fstream>
 #include <iostream>
 
-Maze::Maze(const std::string& maze_file) {
+Maze::Maze(const std::string &maze_file) {
 
     m_maze_start = Coordinate<int>(1, 0); // assumes maze entrance is always the first cell on the left
     m_maze_end = Coordinate<int>(MAZE_SIZE - 2, MAZE_SIZE - 1); //assumes maze exit is always last cell on the right
@@ -29,7 +29,7 @@ Maze::Maze(const std::string& maze_file) {
             //move to the next line
             row++;
         }
-    }  catch (std::ifstream::failure &e) {
+    } catch (std::ifstream::failure &e) {
         std::cout << "Exception reading source file" << std::endl;
     }
 }
@@ -42,10 +42,10 @@ Coordinate<int> Maze::get_maze_end() const {
     return m_maze_end;
 }
 
-std::ostream &operator<<(std::ostream &output, Maze& maze) {
+std::ostream &operator<<(std::ostream &output, Maze &maze) {
     // print maze grid character by character
-    for (auto & i : maze.m_maze) {
-        for (char j : i) {
+    for (auto &i: maze.m_maze) {
+        for (char j: i) {
             output << j << ' ';
         }
         //move to the next line
@@ -64,10 +64,10 @@ char Maze::at(Coordinate<int> p) {
 }
 
 bool Maze::contains(Coordinate<int> p) {
-    return  p.get_x() < MAZE_SIZE &&
-            p.get_x() >= 0 &&
-            p.get_y() < MAZE_SIZE &&
-            p.get_y() >= 0;
+    return p.get_x() < MAZE_SIZE &&
+           p.get_x() >= 0 &&
+           p.get_y() < MAZE_SIZE &&
+           p.get_y() >= 0;
 
 }
 
@@ -77,17 +77,17 @@ void Maze::save_to_file(std::string file_name) {
 
     try {
         //overwrite the file completely if it already exists
-        ofs.open(file_name, std::fstream::trunc );
+        ofs.open(file_name, std::fstream::trunc);
 
         //copy maze grid character by character into the file
-        for (auto & i : m_maze) {
-            for (char j : i) {
+        for (auto &i: m_maze) {
+            for (char j: i) {
                 ofs << j;
             }
             ofs << std::endl;
         }
 
-    }  catch (std::ofstream::failure &e) {
+    } catch (std::ofstream::failure &e) {
         std::cout << "Exception writing to solution file" << std::endl;
     }
 

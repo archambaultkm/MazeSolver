@@ -29,7 +29,7 @@ public:
      *
      * @param maze_file The file containing the maze data.
      */
-    explicit Maze(const std::string& maze_file);
+    explicit Maze(const std::string &maze_file);
 
     /**
     * @brief Destructor.
@@ -91,7 +91,7 @@ public:
      * @param maze The Maze object to print.
      * @return The output stream with the printed maze.
      */
-    friend std::ostream& operator<<(std::ostream& output, Maze& maze);
+    friend std::ostream &operator<<(std::ostream &output, Maze &maze);
 };
 
 

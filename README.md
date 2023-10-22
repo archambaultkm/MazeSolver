@@ -21,12 +21,12 @@
 4) Upload the PDF to the Brightspace assignment folder by the deadline.
 5) Make sure all source files are added to Git in CLion.
 6) Run your program using '__test.txt__' as the target maze.
-   * (test files are located in the '__tests__' folder)
+    * (test files are located in the '__tests__' folder)
 7) Save the solved maze in the '__solved__' folder.
 8) Repeat steps 6-7 using '__test2.txt__' as the target maze.
 9) Repeat steps 6-7 using '__test3.txt__' as the target maze.
 10) Include all solved test files in your final commit.
 11) For your final commit, use the description "assignment completed".
 12) Push the final submission to GitHub by the deadline.
-    
+
 **If you have any questions about this process, please ask your instructor!**

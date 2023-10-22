@@ -12,7 +12,7 @@
  *
  * @tparam T The type of data stored in the stack.
  */
-template <class T>
+template<class T>
 class Stack {
 private:
     //stack nodes contain data and a smart pointer to the next node
@@ -51,7 +51,7 @@ public:
      */
     void push(T data) {
         std::unique_ptr<Node> node = std::make_unique<Node>();
-        node-> m_data = data;
+        node->m_data = data;
 
         if (!empty()) {
             // new node is linked to the current top element
@@ -69,7 +69,7 @@ public:
      * @return The data of the top node on the stack.
      */
     T pop() {
-        Node * temp = m_top.get();
+        Node *temp = m_top.get();
         T temp_data = temp->m_data;
 
         // pop the current top node off the stack

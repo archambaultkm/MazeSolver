@@ -20,7 +20,7 @@ class MazeSolver {
 private:
     Stack<Coordinate<int>> m_successful_moves; // stores maze solution
     std::vector<Coordinate<int>> m_attempted_moves; // stores all moves attempted
-    long m_elapsed_time {}; // how long it took to solve the maze
+    long m_elapsed_time{}; // how long it took to solve the maze
 
 public:
     /**
@@ -41,7 +41,7 @@ public:
      * @param maze The Maze object to be solved.
      * @return `true` if the maze is able to be solved, `false` otherwise.
      */
-    bool solve(Maze& maze);
+    bool solve(Maze &maze);
 
     /**
      * @brief Tries available paths from a given position in the maze.
@@ -52,7 +52,7 @@ public:
      * @param maze The Maze object to navigate.
      * @param position The current position in the maze.
      */
-    void try_available_paths(Maze& maze, Coordinate<int> position);
+    void try_available_paths(Maze &maze, Coordinate<int> position);
 
     /**
      * @brief Gets the elapsed time for solving the maze.

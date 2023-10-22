@@ -6,13 +6,14 @@
 
 #include <iostream>
 #include <chrono>
+
 typedef std::chrono::high_resolution_clock Clock;
 
 long MazeSolver::get_elapsed_time() const {
     return m_elapsed_time;
 }
 
-bool MazeSolver::solve(Maze& maze) {
+bool MazeSolver::solve(Maze &maze) {
 
     // start the timer
     auto start = Clock::now();
@@ -40,7 +41,7 @@ bool MazeSolver::solve(Maze& maze) {
 
             // add special characters to the maze solution file along the successful path
             int stack_size = m_successful_moves.get_size();
-            for (int i=0; i< stack_size; i++) {
+            for (int i = 0; i < stack_size; i++) {
                 maze.set_solution_at(m_successful_moves.pop(), '#');
             }
 
@@ -51,12 +52,12 @@ bool MazeSolver::solve(Maze& maze) {
     return solved;
 }
 
-void MazeSolver::try_available_paths(Maze& maze, Coordinate<int> position) {
+void MazeSolver::try_available_paths(Maze &maze, Coordinate<int> position) {
     // get an array of coordinates 1 step in each compass direction from the current coordinate
     auto options = position.get_adjacent_coordinates(1);
 
     // from the available options, only move to a space if it's valid and hasn't been attempted yet
-    for (auto &&option : options) {
+    for (auto &&option: options) {
         if (maze.contains(option) &&
             maze.at(option) == ' ' &&
             std::find(m_attempted_moves.begin(), m_attempted_moves.end(), option) == m_attempted_moves.end()) {

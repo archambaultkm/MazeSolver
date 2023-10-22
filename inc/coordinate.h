@@ -22,8 +22,7 @@ concept numeric = std::integral<T> or std::floating_point<T>;
  *
  * @tparam T The type for x and y values (must satisfy numeric concept).
  */
-template<class T>
-requires numeric<T>
+template<class T> requires numeric<T>
 class Coordinate {
 private:
     T x; // x-coordinate
@@ -48,7 +47,7 @@ public:
     *
     * @param p The Coordinate to copy.
     */
-    Coordinate(const Coordinate & p) = default;
+    Coordinate(const Coordinate &p) = default;
 
     /**
      * @brief Default destructor.
@@ -89,7 +88,7 @@ public:
      * @param p The Coordinate to compare with.
      * @return bool
      */
-    bool operator==(const Coordinate& p) const {
+    bool operator==(const Coordinate &p) const {
         return (this->x == p.x) && (this->y == p.y);
     }
 };
