@@ -3,6 +3,11 @@
 #include "../inc/Maze.h"
 #include "../inc/MazeSolver.h"
 
+#define RESET   "\033[0m"
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define CYAN    "\033[36m"
+
 using namespace std;
 
 bool isValidFilePath(const string &provided_file_path);
@@ -12,13 +17,13 @@ int main(int argc, char *argv[]) {
     // validate program arguments for maze and solution files
     if (argc == 3) {
         if (!isValidFilePath(argv[1]) || !isValidFilePath(argv[2])) {
-            cout << "Must enter a valid .txt format file name for both the maze and solution file." << endl;
-            cout << "arguments should resemble \"solve_maze ../tests/test.txt ../solved/solution.txt\" " << endl;
+            cout << RED << "Must enter a valid .txt format file name for both the maze and solution file." << RESET << endl;
+            cout << CYAN << "Arguments should resemble \"./solve ../tests/test.txt ../solved/solution.txt\" " << RESET << endl;
 
             return 1;
         }
     } else {
-        cout << "Invalid arguments: should resemble \"solve_maze ../tests/maze.txt ../solved/solution.txt\" " << endl;
+        cout << RED << "Invalid arguments: should resemble \"./solve ../tests/maze.txt ../solved/solution.txt\" " << RESET << endl;
 
         return 1;
     }
@@ -32,10 +37,10 @@ int main(int argc, char *argv[]) {
     // solve the maze
     MazeSolver maze_solver;
     if (maze_solver.solve(maze)) {
-        cout << "Solved maze at " << maze_file << " in " << maze_solver.get_elapsed_time() << " microseconds" << endl;
+        cout << GREEN << "Solved maze at " << maze_file << " in " << maze_solver.get_elapsed_time() << " microseconds" << RESET << endl;
         maze.save_to_file(solution_file);
     } else {
-        cout << "Could not find a solution. Make sure the provided file is a valid maze." << endl;
+        cout << RED << "Could not find a solution. Make sure the provided file is a valid maze." << RESET << endl;
     }
 
     return 0;

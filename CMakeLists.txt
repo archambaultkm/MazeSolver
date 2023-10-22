@@ -11,3 +11,12 @@ add_executable(Assignment_2
         inc/Maze.h
         inc/Stack.h
         inc/Coordinate.h)
+
+add_executable(solve
+        src/main.cpp
+        src/MazeSolver.cpp
+        inc/MazeSolver.h
+        src/Maze.cpp
+        inc/Maze.h
+        inc/Stack.h
+        inc/Coordinate.h)

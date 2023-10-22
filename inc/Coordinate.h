@@ -8,7 +8,7 @@
 #include <array>
 #include <concepts>
 
-// learned from https://stackoverflow.com/questions/14294267/class-template-for-numeric-types
+// "arithmetic" concept from https://stackoverflow.com/questions/14294267/class-template-for-numeric-types
 template<typename T>
 concept arithmetic = std::integral<T> or std::floating_point<T>;
 
