@@ -23,13 +23,13 @@ private:
     };
 
     std::unique_ptr<Node> m_top; // a smart pointer to the top of the stack
-    int size; // the number of nodes in the stack
+    int m_size; // the number of nodes in the stack
 
 public:
     /**
      * @brief Default constructor to initialize an empty stack.
      */
-    Stack() { size = 0; }
+    Stack() { m_size = 0; }
 
     /**
      * @brief Default destructor.
@@ -61,7 +61,7 @@ public:
 
         // new node goes to the top of the stack
         m_top = std::move(node);
-        size++;
+        m_size++;
     }
 
     /**
@@ -75,7 +75,7 @@ public:
 
         // pop the current top node off the stack
         m_top = std::move(m_top->m_next);
-        size--;
+        m_size--;
 
         return temp_data;
     }
@@ -95,7 +95,7 @@ public:
      * @return The size of the stack.
      */
     int get_size() {
-        return size;
+        return m_size;
     }
 };
 

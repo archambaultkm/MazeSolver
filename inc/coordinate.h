@@ -26,14 +26,14 @@ concept numeric = std::integral<T> or std::floating_point<T>;
 template<class T> requires numeric<T>
 class Coordinate {
 private:
-    T x; // x-coordinate
-    T y; // y-coordinate
+    T m_x; // x-coordinate
+    T m_y; // y-coordinate
 
 public:
     /**
      * @brief Constructor, initializes x and y to 0.
      */
-    Coordinate() : x(0), y(0) {};
+    Coordinate() : m_x(0), m_y(0) {};
 
     /**
      * @brief Constructor to initialize coordinates with specified values.
@@ -41,7 +41,7 @@ public:
      * @param x coordinate.
      * @param y coordinate.
      */
-    Coordinate(T x, T y) : x(x), y(y) {};
+    Coordinate(T x, T y) : m_x(x), m_y(y) {};
 
     /**
     * @brief Copy constructor.
@@ -56,11 +56,11 @@ public:
     ~Coordinate() = default;
 
     T get_x() const {
-        return this->x;
+        return this->m_x;
     }
 
     T get_y() const {
-        return this->y;
+        return this->m_y;
     }
 
     /**
@@ -75,10 +75,10 @@ public:
 
         std::array<Coordinate, 4> options;
 
-        options[0] = Coordinate(this->x + step_size, this->y); // east
-        options[1] = Coordinate(this->x, this->y + step_size); // south
-        options[2] = Coordinate(this->x, this->y - step_size); // north
-        options[3] = Coordinate(this->x - step_size, this->y); // west
+        options[0] = Coordinate(this->m_x + step_size, this->m_y); // east
+        options[1] = Coordinate(this->m_x, this->m_y + step_size); // south
+        options[2] = Coordinate(this->m_x, this->m_y - step_size); // north
+        options[3] = Coordinate(this->m_x - step_size, this->m_y); // west
 
         return options;
     }
@@ -90,7 +90,7 @@ public:
      * @return bool
      */
     bool operator==(const Coordinate &p) const {
-        return (this->x == p.x) && (this->y == p.y);
+        return (this->m_x == p.m_x) && (this->m_y == p.m_y);
     }
 };
 
