@@ -12,6 +12,8 @@
 const int MAZE_SIZE = 51;
 
 /**
+ * @class Maze
+ *
  * @brief A class representing a 2D maze from a text file in coordinates.
  *
  */

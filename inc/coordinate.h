@@ -12,7 +12,6 @@
 /**
  * @brief A concept for arithmetic types (integral or floating-point).
  *
- * https://stackoverflow.com/questions/14294267/class-template-for-numeric-types
  */
 template<typename T>
 concept numeric = std::integral<T> or std::floating_point<T>;

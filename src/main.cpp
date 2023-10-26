@@ -11,32 +11,35 @@
 
 using namespace std;
 
+const string expected_arg_format = "\"./solve ../tests/test.txt solution.txt\"";
+
 bool is_valid_file_path(const string &provided_file_path);
 
 int main(int argc, char *argv[]) {
 
     // validate program arguments for maze and solution files
-    if (argc == 3) {
-        if (!is_valid_file_path(argv[1]) || !is_valid_file_path(argv[2])) {
-            cout << RED << "Must enter a valid .txt format file name for both the maze and solution file." << RESET << endl;
-            cout << CYAN << "Arguments should resemble \"./solve ../tests/test.txt ../solved/solution.txt\" " << RESET << endl;
-
-            return 1;
-        }
-    } else {
-        cout << RED << "Invalid arguments: should resemble \"./solve ../tests/maze.txt ../solved/solution.txt\" " << RESET << endl;
+    if (argc != 3) {
+        cerr << RED << "Invalid arguments: expected input resembling " << expected_arg_format << RESET << endl;
 
         return 1;
     }
 
+    if (!is_valid_file_path(argv[1]) || !is_valid_file_path(argv[2])) {
+        cerr << RED << "Must enter a valid .txt format file name for both the maze and solution file." << RESET << endl;
+        cout << CYAN << "Arguments should resemble " << expected_arg_format << RESET << endl;
+
+        return 1;
+    }
+
+    // proceed with valid file names
     string maze_file = argv[1];
     string solution_file = argv[2];
 
-    // initialize maze with given file
+    // initialize maze and solver
     Maze maze(maze_file);
+    MazeSolver maze_solver;
 
     // attempt to solve the maze and indicate the result
-    MazeSolver maze_solver;
     if (maze_solver.solve(maze)) {
         cout << GREEN << "Solved maze at " << maze_file << " in " << maze_solver.get_elapsed_time() << " microseconds" << RESET << endl;
         maze.save_to_file(solution_file);
