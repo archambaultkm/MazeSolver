@@ -6,8 +6,8 @@
 #include <iostream>
 #include <regex>
 #include "../inc/colours.h"
-#include "../inc/maze.h"
-#include "../inc/maze_solver.h"
+#include "maze.h"
+#include "maze_solver.h"
 
 using namespace std;
 

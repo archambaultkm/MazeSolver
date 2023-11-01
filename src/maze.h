@@ -7,7 +7,7 @@
 #define ASSIGNMENT_2_MAZE_H
 
 #include <string>
-#include "coordinate.h"
+#include "../inc/coordinate.h"
 
 const int MAZE_SIZE = 51;
 

@@ -3,7 +3,7 @@
 // Created by Kaitlyn Archambault on 2023-10-03.
 //
 
-#include "../inc/maze.h"
+#include "maze.h"
 #include <fstream>
 #include <iostream>
 

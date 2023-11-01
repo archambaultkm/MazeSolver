@@ -3,7 +3,7 @@
 // Created by Kaitlyn Archambault on 2023-10-03.
 //
 
-#include "../inc/maze_solver.h"
+#include "maze_solver.h"
 
 #include <iostream>
 #include <chrono>

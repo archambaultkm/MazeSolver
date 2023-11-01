@@ -6,9 +6,9 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(Assignment_2
         src/main.cpp
         src/maze_solver.cpp
-        inc/maze_solver.h
+        src/maze_solver.h
         src/maze.cpp
-        inc/maze.h
+        src/maze.h
         inc/stack.h
         inc/coordinate.h
         inc/colours.h)
@@ -16,9 +16,9 @@ add_executable(Assignment_2
 add_executable(solve
         src/main.cpp
         src/maze_solver.cpp
-        inc/maze_solver.h
+        src/maze_solver.h
         src/maze.cpp
-        inc/maze.h
+        src/maze.h
         inc/stack.h
         inc/coordinate.h
         inc/colours.h)

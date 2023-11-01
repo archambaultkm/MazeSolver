@@ -8,9 +8,9 @@
 
 
 #include <vector>
-#include "stack.h"
+#include "../inc/stack.h"
 #include "maze.h"
-#include "coordinate.h"
+#include "../inc/coordinate.h"
 
 /**
  * @class MazeSolver

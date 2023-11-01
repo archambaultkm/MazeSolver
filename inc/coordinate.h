@@ -68,7 +68,6 @@ public:
      * @param step_size distance between coordinates
      *
      * @returns An array of 4 Coordinate objects
-     * @note in the future, step_size will ideally be determined within this class
      */
     std::array<Coordinate, 4> get_adjacent_coordinates(T step_size) const {
 
